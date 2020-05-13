@@ -1,0 +1,50 @@
+{% extends "menu/menuc19.html" %}
+  {% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">C O V I D 1 9</h1>
+            <p class="lead font-italic">Cadastro</p>
+            <hr class="my-4">
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+      <div class="row">
+        <div class="col-md-4">
+            {{ form.nr_cpf|as_crispy_field }}
+        </div>
+        <div class="col-md-3">
+            {{ form.no_funcionario | as_crispy_field }}
+        </div>
+        <div class="col-md-3">
+            {{ form.nr_nit | as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+             {{ form.cd_codemp |as_crispy_field}}
+             </div>
+         <div class="col-md-4">
+             {{ form.nr_matricula|as_crispy_field}}
+         </div>    
+         <div class="col-md-4">
+            {{ form.no_logradouro |as_crispy_field}}
+        </div>      
+    </div>
+ 
+    <div class="row">
+        <div class="col-md-8">
+             <button type='submit' class="btn btn-success btn-block btn-1g"><i class="fas fa-database"></i> Gravar</button>     
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'c19cadastro_lista' %}" class="btn btn-secondary btn-block btn-1g">
+                <i class="fas fa-stream"></i> Listar
+            </a>
+        </div>
+    </div>  
+</form>
+</div>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends "menu/menuc19.html" %}
+  
+{% block content %}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">C O V I D 1 9</h1>
+            <p class="lead font-italic">Teste Rápidos</p>
+            <hr class="my-4">
+<table class="table table-borderless">
+<thead class="border-botton font-weight-bold">
+    <tr>
+        <td>CPF</td>
+        <td>Coleta</td>
+        <td>Resultado</td>
+        <td>Sintomas</td>
+        <td>
+            <a href="{% url 'c19teste_novo' %} " class="btn btn-outline-success">
+                <i class="fas fa-plus"></i> Novo
+            </a>
+        </td>
+    </tr>
+</thead>    
+<tbody>
+    {% for c19_teste in c19teste_list %}
+        <tr>
+            <td> {{c19_teste.nr_cpf}</td>
+            <td> {{c19_teste.dt_coleta}}</td>
+            <td>{{c19_teste.dt_resultado}}</td>
+            <td>{{c19_teste.dt_sintomas}}</td>
+            <td>
+                 <a href="{% url 'c19teste_altera' dap_comvenda.pk_c19_teste %}" class="btn text-secondary px-0">
+                  <i class="far fa-edit fa-1g"></i> 
+            </a>
+            <form action="{% url 'c19teste_exclui' dap_comvenda.pk_c19_teste %}" method="post" class="d-inline">
+                  {% csrf_token %}
+                  <button type="submit" class="btn">
+                    <i class="far fa-trash-alt fa-1g text-danger float-right"></i>
+                    </button> 
+            </form>  
+
+        </td>
+        </tr>
+    {% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+{% endblock content %}

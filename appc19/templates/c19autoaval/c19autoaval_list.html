@@ -1,0 +1,50 @@
+{% extends "menu/menuc19.html" %}
+  
+{% block content %}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">C O V I D 1 9</h1>
+            <p class="lead font-italic">Auto Avaliação</p>
+            <hr class="my-4">
+<table class="table table-borderless">
+<thead class="border-botton font-weight-bold">
+    <tr>
+        <td>CPF </td>
+        <td>Avaliado em</td>
+        <td>Febre</td>
+        <td>Dor Cabeça</td>
+        <td>
+            <a href="{% url 'c19autoaval_novo' %} " class="btn btn-outline-success">
+                <i class="fas fa-plus"></i> Novo
+            </a>
+        </td>
+    </tr>
+</thead>    
+<tbody>
+    {% for c19_autoaval in c19autoaval_list %}
+        <tr>
+            <td> {{c19_autoaval.nr_cpf}}</td>
+            <td> {{c19_autoaval.dt_avaliacao}}</td>
+            <td>{{c19_autoaval.fl_febre}}</td>
+            <td>{{c19_autoaval.fl_dorcabeca}}</td>
+            <td>
+                 <a href="{% url 'c19autoaval_altera' c19_autoaval.pk_c19_autoaval %}" class="btn text-secondary px-0">
+                  <i class="far fa-edit fa-1g"></i> 
+            </a>
+            <form action="{% url 'c10autoaval_exclui' c19_autoaval.pk_c19_autoaval %}" method="post" class="d-inline">
+                  {% csrf_token %}
+                  <button type="submit" class="btn">
+                    <i class="far fa-trash-alt fa-1g text-danger float-right"></i>
+                    </button> 
+            </form>  
+
+        </td>
+        </tr>
+    {% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+</div>
+{% endblock content %}

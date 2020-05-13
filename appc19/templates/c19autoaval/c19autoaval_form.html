@@ -1,0 +1,50 @@
+{% extends "menu/menuc19.html" %}
+  {% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-10 offset-md-1 mt-5">
+        <div class="jumbotron">
+            <h1 class="display-4">C O V I D 1 9</h1>
+            <p class="lead font-italic">Auto Avaliação</p>
+            <hr class="my-4">
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+      <div class="row">
+        <div class="col-md-4">
+            {{ form.nr_cpf|as_crispy_field }}
+        </div>
+        <div class="col-md-3">
+            {{ form.dt_avaliacao | as_crispy_field }}
+        </div>
+        <div class="col-md-3">
+            {{ form.fl_febre | as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+             {{ form.fl_dorcabeca|as_crispy_field}}
+             </div>
+         <div class="col-md-4">
+             {{ form.fl_secrecao |as_crispy_field}}
+         </div>    
+         <div class="col-md-4">
+            {{ form.fl_garganta |as_crispy_field}}
+        </div>      
+    </div>
+ 
+    <div class="row">
+        <div class="col-md-8">
+             <button type='submit' class="btn btn-success btn-block btn-1g"><i class="fas fa-database"></i> Gravar</button>     
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'c19autoaval_lista' %}" class="btn btn-secondary btn-block btn-1g">
+                <i class="fas fa-stream"></i> Listar
+            </a>
+        </div>
+    </div>  
+</form>
+</div>
+</div>
+</div>
+{% endblock content %}
